@@ -73,6 +73,14 @@ display(moviesDf)
 
 // COMMAND ----------
 
+moviesDf.select($"year",$"country").explain()
+
+// COMMAND ----------
+
+moviesDf.select($"year",$"country").groupBy($"country").count().explain()
+
+// COMMAND ----------
+
 moviesDf = moviesDf.withColumn("unix_timestamp",unix_timestamp().as("unix_timestamp")).withColumn("Current date",current_date()).withColumn("Published date",to_date($"year","yyyy")).withColumn("Time passed",abs(datediff($"Published date",$"Current date"))/365).withColumn("Budget numerical", regexp_extract($"budget", "\\d+", 0)).na.drop("any")
 display(moviesDf)
 
