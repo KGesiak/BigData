@@ -1,0 +1,14 @@
+
+Jobs tab - Przedstawia podsumowanie wszystkich prac oraz ich szczegółowe informacje. Strona podsumowująca przedstwia ważne dla nas informacje jak status i progres prac, oraz linie czasową wydarzenia. Strona z szczegółowymi informacjami przedstawia również min wizualizacje DAG oraz wszystkie etapy pracy.
+
+Stages tab - Przedstawia status wszystkich etapów prac (active, pending itd), umożliwia zabicie etapu z poziomu karty.
+
+Storage tab - Przedstawia RDD oraz DataFrames znajdujące się w aplikacji. Strona podsumowująca zawiera informacje o poziomach, rozmiarach i partycjach pamięci.
+
+Environment tab - Przedstawia wartości dla różnych środowisk i zmienne konfiguracyjne.
+
+Executors tab - Przedstawia informacje podsumowujące o executors, zużyciu pamięci dyskowej oraz zarezerwowanej.
+
+Sql Tab - Przedstawia informacje o wykonanych zapytaniach SQL, takich jak czas wykonania oraz plany logiczne i fizyczne.
+
+Sql metrics - Przedstawia informacje szczegółowe dotyczące executora każdej operacji.

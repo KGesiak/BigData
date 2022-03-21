@@ -114,3 +114,19 @@ display(new_ratings)
 import org.apache.spark.sql.functions._
 val ratio = ratingsDf.select(avg($"males_allages_avg_vote").alias("males"),avg($"females_allages_avg_vote").alias("females"))
 display(ratio)
+
+// COMMAND ----------
+
+var username = "sqladmin"
+var password = "$3bFHs56&o123$" 
+
+val dataFromSqlServer = sqlContext.read
+      .format("jdbc")
+      .option("driver" , "com.microsoft.sqlserver.jdbc.SQLServerDriver")
+      .option("url", "jdbc:sqlserver://bidevtestserver.database.windows.net:1433;database=testdb")
+      .option("dbtable", "(SELECT table_name FROM information_schema.tables) tmp")
+      .option("user", username)
+      .option("password",password)
+      .load()
+
+display(dataFromSqlServer)
