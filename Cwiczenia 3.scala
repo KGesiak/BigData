@@ -106,6 +106,23 @@ display(ratingsDf)
 
 // COMMAND ----------
 
+val votes = List("votes_1","votes_2","votes_3","votes_4","votes_5","votes_6","votes_7","votes_8","votes_9","votes_10")
+for( i <- votes){
+  var score = ratingsDf.stat.approxQuantile(i, Array(0.5), 0.25)
+  var string = score.mkString(",")
+  println(i + " " + string)
+}
+
+// COMMAND ----------
+
+import org.apache.spark.sql.types.{ArrayType, DoubleType}
+import org.apache.spark.sql.functions._
+
+var dfWithMean = ratingsDf.withColumn("mean",(col("votes_1")+col("votes_2")*lit(2)+col("votes_3")*lit(3)+col("votes_4")*lit(4)+col("votes_5")*lit(5)+col("votes_6")*lit(6)+col("votes_7")*lit(7)+col("votes_8")*lit(8)+col("votes_9")*lit(9)+col("votes_10")*lit(10)).cast(DoubleType)/(col("total_votes")))
+display(dfWithMean)
+
+// COMMAND ----------
+
 val new_ratings = ratingsDf.na.drop("any").withColumn("median_diff", $"median_vote" - $"weighted_average_vote").withColumn("mean_diff", $"mean_vote" - $"weighted_average_vote")
 display(new_ratings)
 

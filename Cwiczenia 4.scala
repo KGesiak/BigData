@@ -192,6 +192,21 @@ val multiline_df = spark.read.option("multiline", "true")
 
 // COMMAND ----------
 
+var df = spark.read.format().option(multiline_df)
+selectExpr("","","","",explode())
+
+df2 = df.selectExt("*","feature")
+
+// COMMAND ----------
+
+var jsonBrzydki = spark.read.option("multiline", "true")
+  .json("/FileStore/tables/brzydki.json")
+
+
+val Json3 = jsonBrzydki.selectExpr("features")
+
+// COMMAND ----------
+
 import org.apache.spark.sql.Column
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.functions.col
